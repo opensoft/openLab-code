@@ -1,0 +1,26 @@
+name: conformance
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: code
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: opensoft/openLab-spec
+          ref: 1d6745b9a14a64b626c2ac95d7f15a365123e268
+          path: spec
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r code/requirements.txt
+      - run: python code/tools/check_examples.py
+      - run: python -m unittest discover -s code/tests -v

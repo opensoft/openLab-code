@@ -1,0 +1,23 @@
+{
+  "contractVersion": "0.1.0",
+  "executionId": "execution-demo-001",
+  "requestId": "position-demo-001",
+  "scope": {
+    "organizationId": "org-demo",
+    "laboratoryId": "lab-demo"
+  },
+  "status": "succeeded",
+  "statusRevision": 3,
+  "adapter": {
+    "componentId": "synthetic-turntable",
+    "version": "0.1.0",
+    "buildDigest": "synthetic-build-001"
+  },
+  "evidence": [
+    {
+      "basis": "no-op",
+      "observedAt": "2026-11-08T00:00:00Z",
+      "reference": "synthetic-already-positioned"
+    }
+  ]
+}

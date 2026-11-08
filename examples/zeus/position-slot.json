@@ -1,0 +1,21 @@
+{
+  "contractVersion": "0.1.0",
+  "requestId": "position-demo-001",
+  "scope": {
+    "organizationId": "org-demo",
+    "laboratoryId": "lab-demo"
+  },
+  "instrument": {
+    "instrumentId": "zeus-demo"
+  },
+  "capability": {
+    "descriptorId": "zeus-demo-capabilities",
+    "revision": "rev-1"
+  },
+  "operationId": "turntable.position-slot",
+  "parameters": {
+    "slotNumber": 3
+  },
+  "expiresAt": "2099-01-01T00:00:00Z",
+  "correlationId": "demo-work-001"
+}

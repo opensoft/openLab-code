@@ -1,0 +1,28 @@
+{
+  "contractVersion": "0.1.0",
+  "artifactId": "artifact-demo-001",
+  "acquisitionId": "acquisition-demo-001",
+  "scope": {
+    "organizationId": "org-demo",
+    "laboratoryId": "lab-demo"
+  },
+  "role": "raw-acquisition",
+  "formatId": "synthetic-text",
+  "manifestDigest": "ade8f5cf13cb467b9eee299144d2372fa8d29197b55521387907a827b4f112fd",
+  "files": [
+    {
+      "path": "raw/signal.txt",
+      "sizeBytes": 45,
+      "sha256": "c8099ec575267bc037f8709f1f22142e335671d3904672d998aa3e41a58587da"
+    },
+    {
+      "path": "raw/method.txt",
+      "sizeBytes": 52,
+      "sha256": "663d453818c6c888d80510febeb6069c702103a7724543d674458fd706ff4bc8"
+    }
+  ],
+  "storageRef": {
+    "provider": "synthetic-local",
+    "objectId": "raw-bundle-001"
+  }
+}

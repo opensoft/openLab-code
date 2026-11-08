@@ -1,27 +1,15 @@
-# openLab-code
+# openLab executable examples
 
-The **code leg** of the `openlab` project: the implementation and its
-tests. The requirements it implements live in
-[`Opensoft/openLab-spec`](https://github.com/Opensoft/openLab-spec).
+Draft 0.1.0: synthetic requests and offline schema/file-integrity checks. No instrument operations, production transfer or scientific analysis is performed.
 
-**Clone the assembly root, not this repository.** This leg is mounted as a
-submodule at `code/` inside
-[`Opensoft/openLab`](https://github.com/Opensoft/openLab), which
-is what pins the commit of this repository that the project currently is:
+From the assembly root, using Python 3.10+:
 
 ```sh
-git clone --recurse-submodules https://github.com/Opensoft/openLab.git
-cd openLab
-make bootstrap
+python -m pip install -r code/requirements.txt
+python code/tools/check_examples.py
+python -m unittest discover -s code/tests -v
 ```
 
-Working here directly is fine — it is an ordinary repository with an ordinary
-branch. What advancing this leg does NOT do is advance the project: that is a
-commit in the assembly root moving the gitlink, `contracts/code-pin.yaml` and
-any workflow `@<sha>` reference together.
+Set CONTRACTS_DIR or pass --contracts to the checker when using another checkout. Schemas are owned by openLab-spec; there is no private dependency and schema resolution is offline. Capability limits, authorization, expiration, idempotency and physical completion require a real host implementation.
 
-Being the code leg confers no authority over the implementation. The split is
-navigation; authority travels in grants, and a project that keeps spec and
-code in one repository is reviewed identically.
-
-Topic: `xf-project-openlab`.
+Fixtures under examples/hplcms/raw/ are generated text data, not vendor files or measurements. The artifact manifest digest is SHA-256 of sorted file entries encoded as UTF-8 JSON with sorted keys and compact separators. The static checker reads whole files and is deliberately unsuitable for large concurrent production transfers.
