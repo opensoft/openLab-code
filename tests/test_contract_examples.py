@@ -60,3 +60,13 @@ class ContractExamples(unittest.TestCase):
                 path.write_text(token, encoding="utf-8")
                 with self.assertRaises(ValueError):
                     load_json(path)
+
+    def test_invalid_timestamps_rejected(self):
+        request = load_json(CODE / "examples/zeus/rotate.json")
+        request["expiresAt"] = "not-a-timestamp"
+        with self.assertRaises(ValidationError):
+            self.schemas["command-request.schema.json"].validate(request)
+        execution = load_json(CODE / "examples/zeus/execution.json")
+        execution["evidence"][0]["observedAt"] = "2026-99-99T00:00:00Z"
+        with self.assertRaises(ValidationError):
+            self.schemas["command-execution.schema.json"].validate(execution)
